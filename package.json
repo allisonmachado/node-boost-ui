@@ -1,7 +1,14 @@
 {
   "name": "node-boost-ui",
   "version": "0.1.0",
+  "author": "Allison Machado Gonçalves",
+  "description": "Minimal user interface for the node-boost app template",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allisonmachado/node-boost-ui.git"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
