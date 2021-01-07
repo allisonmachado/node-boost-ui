@@ -5,8 +5,8 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        {/* Fixed navbar */}
         <header>
-          {/* Fixed navbar */}
           <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a className="navbar-brand" href="/">Node Boost</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,47 +24,20 @@ export default class App extends React.Component {
         {/* Begin page content */}
         <main role="main" className="flex-shrink-0">
           <div className="container py-5 my-5">
-            <h1>Main Title</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit lectus et risus pellentesque, at maximus diam sollicitudin. Quisque elementum, orci id molestie aliquam, massa odio pulvinar eros, nec imperdiet augue augue et massa. Integer tempor luctus posuere. Sed non justo odio. Quisque ornare porttitor vulputate. Suspendisse metus sem, pulvinar blandit dictum sit amet, sodales non diam. Maecenas diam tortor, pulvinar tincidunt molestie ac, semper eget nisl. Vestibulum eleifend mollis risus, id ultrices diam viverra ac. Ut sit amet ex urna.
-            </p>
+            <h1>Node Boost User Interface</h1>
+            <hr></hr>
+            <p>Minimal user interface for the node-boost app template.</p>
+            <p>This project was bootstrapped with Create React App.</p>
           </div>
         </main>
         <footer className="footer mt-auto py-3 bg-light">
           <div className="container">
             <div className="row my-4">
               <div className="col-sm">
-              <a className="text-secondary font-weight-bold" href="/">GitHub</a>
+                <a className="text-secondary font-weight-bold" href="/">GitHub</a>
               </div>
               <div className="col-sm">
-              <a className="text-secondary font-weight-bold" href="/">About</a>
+                <a className="text-secondary font-weight-bold" href="/">About</a>
               </div>
             </div>
             <div className="row">
