@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import ListUsersPage from "./components/ListUsersPage";
-import CreateUsersPage from "./components/CreateUsersPage";
+import CreateUserPage from "./components/CreateUserPage";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -22,7 +22,7 @@ export default class App extends React.Component {
                 <ListUsersPage></ListUsersPage>
               </Route>
               <Route path="/users/create">
-                <CreateUsersPage></CreateUsersPage>
+                <CreateUserPage></CreateUserPage>
               </Route>
             </Switch>
           </div>
