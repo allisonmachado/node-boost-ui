@@ -1,5 +1,6 @@
 import React from "react"
 import CreateUsersPage from "../CreateUsersPage";
+import Title from "../Title";
 
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 
@@ -11,8 +12,7 @@ class ListUsersPage extends React.Component {
       <React.Fragment>
         <Switch>
           <Route exact path={path}>
-            <h1>Users</h1>
-            <hr></hr>
+            <Title>Users</Title>
             <table class="table table-hover table-responsive-sm">
               <thead class="thead-light">
                 <tr>

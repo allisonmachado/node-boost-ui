@@ -1,11 +1,11 @@
 import React from "react"
+import Title from "../Title"
 
 export default class CreateUsersPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Create User</h1>
-        <hr></hr>
+        <Title>Create User</Title>
         <form>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
