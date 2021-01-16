@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "./components/Footer";
 import Header from './components/Header';
 import HomePage from './components/HomePage';
+import LoginPage from "./components/LoginPage";
 import ListUsersPage from "./components/ListUsersPage";
 import CreateUserPage from "./components/CreateUserPage";
 
@@ -17,6 +18,9 @@ export default class App extends React.Component {
             <Switch>
               <Route exact path="/">
                 <HomePage></HomePage>
+              </Route>
+              <Route path="/login">
+                <LoginPage></LoginPage>
               </Route>
               <Route path="/users">
                 <ListUsersPage></ListUsersPage>

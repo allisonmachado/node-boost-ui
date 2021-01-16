@@ -16,7 +16,7 @@ class ListUsersPage extends React.Component {
             <Title>Users</Title>
             <UsersTable></UsersTable>
             <Link to={`${url}/create`}>
-              <button type="button" class="btn btn-primary float-right">
+              <button type="button" className="btn btn-primary float-right">
                 Create
               </button>
             </Link>
