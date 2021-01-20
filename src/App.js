@@ -23,7 +23,9 @@ export default class App extends React.Component {
                 <LoginPage></LoginPage>
               </Route>
               <Route path="/users">
-                <ListUsersPage></ListUsersPage>
+                <ListUsersPage
+                  userService={this.props.container.userService}>
+                </ListUsersPage>
               </Route>
               <Route path="/users/create">
                 <CreateUserPage></CreateUserPage>

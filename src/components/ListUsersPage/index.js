@@ -14,7 +14,7 @@ class ListUsersPage extends React.Component {
         <Switch>
           <Route exact path={path}>
             <Title>Users</Title>
-            <UsersTable></UsersTable>
+            <UsersTable userService={this.props.userService}></UsersTable>
             <Link to={`${url}/create`}>
               <button type="button" className="btn btn-primary float-right">
                 Create

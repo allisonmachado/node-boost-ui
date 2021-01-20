@@ -1,6 +1,18 @@
 import React from "react"
 
 export default class UsersTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: []
+    }
+  }
+
+  async componentDidMount() {
+    const users = await this.props.userService.getUsers();
+    this.setState({ users });
+  }
+
   render() {
     return (
       <table className="table table-hover table-responsive-sm">
@@ -13,24 +25,12 @@ export default class UsersTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          {this.state.users.map(user => <tr key={user.id}>
+            <td>{user.name}</td>
+            <td>{user.surname}</td>
+            <td>{user.email}</td>
             <td>?</td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>?</td>
-          </tr>
-          <tr>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>?</td>
-          </tr>
+          </tr>)}
         </tbody>
       </table>
     )
