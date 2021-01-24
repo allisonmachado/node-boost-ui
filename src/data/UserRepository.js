@@ -1,6 +1,10 @@
 export default class UserRepository {
+  constructor(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
+
   async getUsers() {
-    const response = await fetch('http://localhost:8080/users');
+    const response = await fetch(`${this.baseUrl}/users`);
     return response.json();
   }
 }
