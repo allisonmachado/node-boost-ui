@@ -20,7 +20,7 @@ export default class App extends React.Component {
                 <HomePage></HomePage>
               </Route>
               <Route path="/login">
-                <LoginPage></LoginPage>
+                <LoginPage authService={this.props.container.authService}></LoginPage>
               </Route>
               <Route path="/users">
                 <ListUsersPage

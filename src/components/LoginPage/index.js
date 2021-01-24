@@ -1,13 +1,16 @@
 import React from "react"
 import Title from "../Title"
 import ErrorList from "../ErrorList"
+import LoadingLine from "../LoadingLine";
 
 export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      disabled: false,
+      informError: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,14 +19,21 @@ export default class LoginPage extends React.Component {
   handleInputChange(event) {
     const value = event.target.value;
     const name = event.target.name;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   }
 
-  handleSubmit(event) {
-    // TODO: submit auth request
+  async handleSubmit(event) {
     event.preventDefault();
+    this.setState({ disabled: true });
+    this.setState({ informError: false });
+    try {
+      const access = await this.props.authService.authenticateUser(this.state.email, this.state.password);
+      // TODO: save access token and redirect
+    } catch (error) {
+      this.setState({ informError: true });
+    } finally {
+      this.setState({ disabled: false });
+    }
   }
 
   render() {
@@ -34,26 +44,30 @@ export default class LoginPage extends React.Component {
           <div className="form-group">
             <label htmlFor="emailInput">Email address</label>
             <input
-              id="emailInput" 
+              id="emailInput"
               type="email"
               name="email"
-              value={this.state.email}
               className="form-control"
+              value={this.state.email}
+              disabled={this.state.disabled}
               onChange={this.handleInputChange} />
           </div>
           <div className="form-group">
             <label htmlFor="passwordInput">Password</label>
-            <input 
+            <input
               id="passwordInput"
               type="password"
               name="password"
-              value={this.state.password}
               className="form-control"
-              onChange={this.handleInputChange}/>
+              value={this.state.password}
+              disabled={this.state.disabled}
+              onChange={this.handleInputChange} />
           </div>
-          <ErrorList erros={["Invalid email or password"]}></ErrorList>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          {this.state.informError && <ErrorList erros={["Invalid email or password"]}></ErrorList>}
+          <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>Submit</button>
         </form>
+        <br></br>
+        {this.state.disabled && <LoadingLine>Loading...</LoadingLine>}
       </React.Fragment>
     )
   }
