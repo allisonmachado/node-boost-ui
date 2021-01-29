@@ -1,4 +1,4 @@
-export default class UserRepository {
+export default class UserFetch {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
   }

@@ -1,6 +1,6 @@
-import ClientError from "../lib/ClientError";
+import ClientError from "../../lib/ClientError";
 
-export default class AuthRepository {
+export default class AuthFetch {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
   }

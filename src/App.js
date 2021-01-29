@@ -9,15 +9,27 @@ import CreateUserPage from "./components/CreateUserPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.userService = this.props.container.userService;
+    this.authService = this.props.container.authService;
+    this.state = {
+      user: this.userService.getLoggedInUser(),
+    }
+  }
+
   render() {
     return (
       <Router>
-        <Header></Header>
+        <Header>
+        </Header>
         <main role="main" className="flex-shrink-0">
           <div className="container py-5 my-5">
             <Switch>
               <Route exact path="/">
-                <HomePage></HomePage>
+                <HomePage
+                  user={this.state.user}>
+                </HomePage>
               </Route>
               <Route path="/login">
                 <LoginPage authService={this.props.container.authService}></LoginPage>

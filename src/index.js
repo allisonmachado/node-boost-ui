@@ -2,9 +2,10 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserService from './services/UserService';
-import UserRepository from './data/UserRepository';
+import UserFetch from './data/http/UserFetch';
+import UserRepository from './data/storage/UserRepository';
 import AuthService from './services/AuthService';
-import AuthRepository from './data/AuthRepository';
+import AuthFetch from './data/http/AuthFetch';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -13,8 +14,8 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import './index.css';
 
 const container = {
-  userService: new UserService(new UserRepository('http://localhost:8080')),
-  authService: new AuthService(new AuthRepository('http://localhost:8080')),
+  userService: new UserService(new UserFetch('http://localhost:8080'), new UserRepository()),
+  authService: new AuthService(new AuthFetch('http://localhost:8080')),
 }
 
 ReactDOM.render(
