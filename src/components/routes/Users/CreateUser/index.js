@@ -1,7 +1,7 @@
 import React from "react"
-import Title from "../../util/Title"
+import Title from "../../../util/Title"
 
-export default function CreateUser(props) {
+export default function CreateUser() {
   return (<>
     <Title>Create User</Title>
     <form>

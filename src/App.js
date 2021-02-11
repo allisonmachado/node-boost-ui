@@ -1,9 +1,8 @@
 import Footer from "./components/layouts/Footer";
 import Header from './components/layouts/Header';
-import Home from './components/routes/Home';
 import Login from "./components/routes/Login";
-import ListUser from "./components/routes/ListUsers";
-import CreateUser from "./components/routes/CreateUser";
+import Home from './components/routes/Home';
+import User from "./components/routes/Users"
 
 import { Switch, Route } from "react-router-dom";
 
@@ -26,12 +25,9 @@ export default function App(props) {
             <Login authService={props.container.authService}></Login>
           </Route>
           <Route path="/users">
-            <ListUser
+            <User
               userService={props.container.userService}>
-            </ListUser>
-          </Route>
-          <Route path="/users/create">
-            <CreateUser></CreateUser>
+            </User>
           </Route>
         </Switch>
       </div>
