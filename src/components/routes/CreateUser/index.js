@@ -1,7 +1,7 @@
 import React from "react"
 import Title from "../../util/Title"
 
-export default function ConfirmationModal(props) {
+export default function CreateUser(props) {
   return (<>
     <Title>Create User</Title>
     <form>

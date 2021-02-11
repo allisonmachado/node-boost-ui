@@ -1,9 +1,9 @@
 import Footer from "./components/layouts/Footer";
 import Header from './components/layouts/Header';
-import HomePage from './components/routes/HomePage';
-import LoginPage from "./components/routes/LoginPage";
-import ListUsersPage from "./components/routes/ListUsersPage";
-import CreateUserPage from "./components/routes/CreateUserPage";
+import Home from './components/routes/Home';
+import Login from "./components/routes/Login";
+import ListUser from "./components/routes/ListUsers";
+import CreateUser from "./components/routes/CreateUser";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -18,20 +18,20 @@ export default function App(props) {
       <div className="container py-5 my-5">
         <Switch>
           <Route exact path="/">
-            <HomePage
+            <Home
               user={user}>
-            </HomePage>
+            </Home>
           </Route>
           <Route path="/login">
-            <LoginPage authService={props.container.authService}></LoginPage>
+            <Login authService={props.container.authService}></Login>
           </Route>
           <Route path="/users">
-            <ListUsersPage
+            <ListUser
               userService={props.container.userService}>
-            </ListUsersPage>
+            </ListUser>
           </Route>
           <Route path="/users/create">
-            <CreateUserPage></CreateUserPage>
+            <CreateUser></CreateUser>
           </Route>
         </Switch>
       </div>

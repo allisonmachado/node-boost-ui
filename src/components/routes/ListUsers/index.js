@@ -1,7 +1,7 @@
 import React from "react"
 import Title from "../../util/Title";
 import UsersTable from "./UsersTable";
-import CreateUserPage from "../CreateUserPage";
+import CreateUser from "../CreateUser";
 import ConfirmationModal from "../../util/ConfirmationModal";
 
 import { Switch, Route, Link, withRouter } from "react-router-dom";
@@ -63,7 +63,7 @@ class ListUsersPage extends React.Component {
               deleteHandler={this.deleteUser}></ConfirmationModal>
           </Route>
           <Route path={`${path}/create`}>
-            <CreateUserPage></CreateUserPage>
+            <CreateUser></CreateUser>
           </Route>
         </Switch>
       </React.Fragment>
