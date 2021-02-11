@@ -27,8 +27,9 @@ export default class LoginPage extends React.Component {
     this.setState({ disabled: true });
     this.setState({ informError: false });
     try {
-      const access = await this.props.authService.authenticateUser(this.state.email, this.state.password);
       // TODO: save access token and redirect
+      const access = await this.props.authService.authenticateUser(this.state.email, this.state.password);
+      alert(access)
     } catch (error) {
       this.setState({ informError: true });
     } finally {

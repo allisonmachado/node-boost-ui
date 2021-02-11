@@ -1,11 +1,15 @@
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import UserService from './services/UserService';
 import UserFetch from './data/http/UserFetch';
 import UserRepository from './data/storage/UserRepository';
+
 import AuthService from './services/AuthService';
 import AuthFetch from './data/http/AuthFetch';
+
+import { BrowserRouter as Router } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -20,7 +24,9 @@ const container = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App container={container} />
+    <Router>
+      <App container={container} />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
