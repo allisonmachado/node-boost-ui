@@ -1,4 +1,4 @@
-import Title from "../Title";
+import Title from "../../util/Title";
 
 export default function Home(props) {
   return (<>

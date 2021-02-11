@@ -1,9 +1,9 @@
-import Footer from "./components/Footer";
-import Header from './components/Header';
-import HomePage from './components/HomePage';
-import LoginPage from "./components/LoginPage";
-import ListUsersPage from "./components/ListUsersPage";
-import CreateUserPage from "./components/CreateUserPage";
+import Footer from "./components/layouts/Footer";
+import Header from './components/layouts/Header';
+import HomePage from './components/routes/HomePage';
+import LoginPage from "./components/routes/LoginPage";
+import ListUsersPage from "./components/routes/ListUsersPage";
+import CreateUserPage from "./components/routes/CreateUserPage";
 
 import { Switch, Route } from "react-router-dom";
 

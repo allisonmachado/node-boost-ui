@@ -1,7 +1,7 @@
 import React from "react"
-import Title from "../Title"
-import ErrorList from "../ErrorList"
-import LoadingLine from "../LoadingLine";
+import Title from "../../util/Title"
+import ErrorList from "../../util/ErrorList"
+import LoadingLine from "../../util/LoadingLine";
 
 export default class LoginPage extends React.Component {
   constructor(props) {

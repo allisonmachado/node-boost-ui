@@ -1,8 +1,8 @@
 import React from "react"
-import Title from "../Title";
+import Title from "../../util/Title";
 import UsersTable from "./UsersTable";
 import CreateUserPage from "../CreateUserPage";
-import ConfirmationModal from "../ConfirmationModal";
+import ConfirmationModal from "../../util/ConfirmationModal";
 
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 

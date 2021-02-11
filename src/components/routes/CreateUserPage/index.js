@@ -1,5 +1,5 @@
 import React from "react"
-import Title from "../Title"
+import Title from "../../util/Title"
 
 export default function ConfirmationModal(props) {
   return (<>
