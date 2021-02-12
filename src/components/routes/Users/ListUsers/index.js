@@ -1,64 +1,41 @@
-import React from "react"
 import Title from "../../../util/Title";
 import UsersTable from "./Table";
 import ConfirmationModal from "../../../util/ConfirmationModal";
 
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react"
 
-class ListUsers extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-      userSelected: {
-        id: 0,
-        name: "",
-        surname: "",
-        email: "",
-      },
-    }
-    this.deleteUserClick = this.deleteUserClick.bind(this);
-    this.deleteUser = this.deleteUser.bind(this);
+export default function ListUsers(props) {
+  const [users, setUsers] = useState([])
+  const [selectedUser, setSelectedUser] = useState({ id: 0, name: "", surname: "", email: "" })
+
+  useEffect(() => { fetchUsers() });
+
+  async function fetchUsers() {
+    const users = await props.userService.getUsers();
+    setUsers(users)
   }
 
-  async componentDidMount() {
-    const users = await this.props.userService.getUsers();
-    this.setState({ users });
-  }
-
-  deleteUserClick(user) {
-    this.setState(() => ({
-      userSelected: user,
-    }));
-  }
-
-  deleteUser(user) {
+  function deleteUser(user) {
     console.log("TODO: delete", user);
-    this.setState({ users: [] });
   }
 
-  render() {
-    const { path, url } = this.props.match;
-
-    return (<>
-      <Title>Users</Title>
-      <UsersTable
-        users={this.state.users}
-        deleteHandler={this.deleteUserClick}>
-      </UsersTable>
-      <Link to={`${url}/create`}>
-        <button type="button" className="btn btn-primary float-right">
-          Create
-          </button>
-      </Link>
-      <ConfirmationModal
-        title="Confirmation"
-        action="Delete"
-        item={this.state.userSelected}
-        name={this.state.userSelected.name + " " + this.state.userSelected.surname}
-        deleteHandler={this.deleteUser}></ConfirmationModal>
-    </>)
-  }
+  return (<>
+    <Title>Users</Title>
+    <UsersTable
+      users={users}
+      deleteHandler={setSelectedUser}>
+    </UsersTable>
+    <Link to={`/create`}>
+      <button type="button" className="btn btn-primary float-right">
+        Create
+      </button>
+    </Link>
+    <ConfirmationModal
+      title="Confirmation"
+      action="Delete"
+      item={selectedUser}
+      name={selectedUser.name + " " + selectedUser.surname}
+      deleteHandler={deleteUser}></ConfirmationModal>
+  </>)
 }
-
-export default withRouter(ListUsers);

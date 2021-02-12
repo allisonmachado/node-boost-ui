@@ -6,9 +6,8 @@ import {
   useRouteMatch
 } from "react-router-dom";
 
-
 export default function Users(props) {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
 
   return (
     <Switch>
