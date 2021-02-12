@@ -27,11 +27,11 @@ export default function LoginPage(props) {
     setDisabled(true)
     setInformError(false)
     try {
-      // TODO: save access token and redirect
-      const access = await props.authService.authenticateUser(user.email, user.password);
-      console.log(access)
+      const authUser = await props.authService.authenticateUser(user.email, user.password);
+      auth.signIn(authUser)
     } catch (error) {
       setInformError(true)
+      auth.signOut()
     } finally {
       setDisabled(false)
     }
