@@ -1,5 +1,6 @@
 import Title from "../../../util/Title";
 import UsersTable from "./Table";
+import PrivateComponent from "../../../util/PrivateComponent";
 import ConfirmationModal from "../../../util/ConfirmationModal";
 
 import { Link } from "react-router-dom";
@@ -13,7 +14,7 @@ export default function ListUsers(props) {
 
   async function fetchUsers() {
     const users = await props.userService.getUsers();
-    setUsers(users)
+    setUsers(users);
   }
 
   function deleteUser(user) {
@@ -26,11 +27,13 @@ export default function ListUsers(props) {
       users={users}
       deleteHandler={setSelectedUser}>
     </UsersTable>
-    <Link to={`/create`}>
-      <button type="button" className="btn btn-primary float-right">
-        Create
+    <PrivateComponent>
+      <Link to={`/create`}>
+        <button type="button" className="btn btn-primary float-right">
+          Create
       </button>
-    </Link>
+      </Link>
+    </PrivateComponent>
     <ConfirmationModal
       title="Confirmation"
       action="Delete"
