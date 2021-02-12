@@ -3,73 +3,68 @@ import Title from "../../util/Title"
 import ErrorList from "../../util/ErrorList"
 import LoadingLine from "../../util/LoadingLine";
 
-export default class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      disabled: false,
-      informError: false,
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+import { useState } from "react"
 
-  handleInputChange(event) {
+export default function LoginPage(props) {
+  const [user, setUser] = useState({ email: '', password: '' });
+  const [disabled, setDisabled] = useState(false);
+  const [informError, setInformError] = useState(false);
+
+  function handleInputChange(event) {
     const value = event.target.value;
     const name = event.target.name;
-    this.setState({ [name]: value });
+    setUser({
+      ...user,
+      [name]: value
+    })
   }
 
-  async handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    this.setState({ disabled: true });
-    this.setState({ informError: false });
+    setDisabled(true)
+    setInformError(false)
     try {
       // TODO: save access token and redirect
-      const access = await this.props.authService.authenticateUser(this.state.email, this.state.password);
+      const access = await props.authService.authenticateUser(user.email, user.password);
       alert(access)
     } catch (error) {
-      this.setState({ informError: true });
+      setInformError(true)
     } finally {
-      this.setState({ disabled: false });
+      setDisabled(false)
     }
   }
 
-  render() {
-    return (
-      <React.Fragment>
-        <Title>Login</Title>
-        <form onSubmit={this.handleSubmit} noValidate>
-          <div className="form-group">
-            <label htmlFor="emailInput">Email address</label>
-            <input
-              id="emailInput"
-              type="email"
-              name="email"
-              className="form-control"
-              value={this.state.email}
-              disabled={this.state.disabled}
-              onChange={this.handleInputChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="passwordInput">Password</label>
-            <input
-              id="passwordInput"
-              type="password"
-              name="password"
-              className="form-control"
-              value={this.state.password}
-              disabled={this.state.disabled}
-              onChange={this.handleInputChange} />
-          </div>
-          {this.state.informError && <ErrorList erros={["Invalid email or password"]}></ErrorList>}
-          <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>Submit</button>
-        </form>
-        <br></br>
-        {this.state.disabled && <LoadingLine>Loading...</LoadingLine>}
-      </React.Fragment>
-    )
-  }
+  return (
+    <React.Fragment>
+      <Title>Login</Title>
+      <form onSubmit={handleSubmit} noValidate>
+        <div className="form-group">
+          <label htmlFor="emailInput">Email address</label>
+          <input
+            id="emailInput"
+            type="email"
+            name="email"
+            className="form-control"
+            value={user.email}
+            disabled={disabled}
+            onChange={handleInputChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="passwordInput">Password</label>
+          <input
+            id="passwordInput"
+            type="password"
+            name="password"
+            className="form-control"
+            value={user.password}
+            disabled={disabled}
+            onChange={handleInputChange} />
+        </div>
+        {informError && <ErrorList erros={["Invalid email or password"]}></ErrorList>}
+        <button type="submit" className="btn btn-primary" disabled={disabled}>Submit</button>
+      </form>
+      <br></br>
+      {disabled && <LoadingLine>Loading...</LoadingLine>}
+    </React.Fragment>
+  )
 }
