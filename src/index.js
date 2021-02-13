@@ -1,6 +1,7 @@
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ProvideAuth from "./components/util/ProvideAuth"
 
 import UserService from './services/UserService';
 import UserFetch from './data/http/UserFetch';
@@ -28,7 +29,9 @@ const container = {
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App container={container} />
+      <ProvideAuth authService={container.authService}>
+        <App container={container} />
+      </ProvideAuth>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
