@@ -31,7 +31,6 @@ export default function LoginPage(props) {
       auth.signIn(authUser)
     } catch (error) {
       setInformError(true)
-    } finally {
       setDisabled(false)
     }
   }
