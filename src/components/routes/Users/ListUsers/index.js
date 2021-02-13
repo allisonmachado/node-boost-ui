@@ -10,12 +10,13 @@ export default function ListUsers(props) {
   const [users, setUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState({ id: 0, name: "", surname: "", email: "" })
 
-  useEffect(() => { fetchUsers() }, []);
-
-  async function fetchUsers() {
-    const users = await props.userService.getUsers();
-    setUsers(users);
-  }
+  useEffect(() => {
+    async function fetchUsers() {
+      const users = await props.userService.getUsers();
+      setUsers(users);
+    }
+    fetchUsers()
+  }, [props.userService]);
 
   function deleteUser(user) {
     console.log("TODO: delete", user);
