@@ -1,6 +1,9 @@
 import NavLink from "./NavLink"
 
+import { useAuthState } from "../../../hooks/useAuthState"
+
 export default function Header(props) {
+  const auth = useAuthState()
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -12,7 +15,7 @@ export default function Header(props) {
           <ul className="navbar-nav mr-auto">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/users">Users</NavLink>
-            <NavLink to="/login">Login</NavLink>
+            {auth.user ? <NavLink to="/logout">Logout</NavLink> : <NavLink to="/login">Login</NavLink>}
           </ul>
         </div>
       </nav>

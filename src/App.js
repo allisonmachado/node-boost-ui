@@ -1,6 +1,7 @@
 import ProvideAuth from "./components/util/ProvideAuth"
 import Footer from "./components/layouts/Footer";
 import Header from './components/layouts/Header';
+import Logout from "./components/routes/Logout";
 import Login from "./components/routes/Login";
 import Home from './components/routes/Home';
 import User from "./components/routes/Users"
@@ -25,6 +26,9 @@ export default function App(props) {
             </Route>
             <Route path="/login">
               <Login authService={props.container.authService}></Login>
+            </Route>
+            <Route path="/logout">
+              <Logout authService={props.container.authService}></Logout>
             </Route>
             <Route path="/users">
               <User
