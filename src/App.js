@@ -9,9 +9,6 @@ import User from "./components/routes/Users"
 import { Switch, Route } from "react-router-dom";
 
 export default function App(props) {
-  // const [user, setUser] = useState(null)
-  const user = null;
-
   return (
     <ProvideAuth>
       <Header>
@@ -20,9 +17,7 @@ export default function App(props) {
         <div className="container py-5 my-5">
           <Switch>
             <Route exact path="/">
-              <Home
-                user={user}>
-              </Home>
+              <Home></Home>
             </Route>
             <Route path="/login">
               <Login authService={props.container.authService}></Login>

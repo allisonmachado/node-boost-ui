@@ -1,14 +1,17 @@
 export default class UserService {
-  constructor(authFetch) {
+  constructor(authFetch, authRepository, userRepository) {
     this.authFetch = authFetch;
+    this.authRepository = authRepository;
+    this.userRepository = userRepository;
   }
 
   async authenticateUser(email, password) {
-    // TODO: Save user storage jwt info
-    return this.authFetch.authenticateUser(email, password);
+    const { auth: accessJwt } = await this.authFetch.authenticateUser(email, password);
+    this.authRepository.saveAccessToken(accessJwt);
+    return this.userRepository.getUser();
   }
 
   async quitUser() {
-    // TODO: Clear user storage jwt info
+    this.authRepository.deleteAccessToken()
   }
 }

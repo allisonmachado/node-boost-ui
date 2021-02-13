@@ -7,6 +7,7 @@ import UserFetch from './data/http/UserFetch';
 import UserRepository from './data/storage/UserRepository';
 
 import AuthService from './services/AuthService';
+import AuthRepository from './data/storage/AuthRepository'
 import AuthFetch from './data/http/AuthFetch';
 
 import { BrowserRouter as Router } from "react-router-dom";
@@ -17,9 +18,11 @@ import 'jquery/dist/jquery.slim';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import './index.css';
 
+const userRepository = new UserRepository();
+
 const container = {
-  userService: new UserService(new UserFetch('http://localhost:8080'), new UserRepository()),
-  authService: new AuthService(new AuthFetch('http://localhost:8080')),
+  userService: new UserService(new UserFetch('http://localhost:8080'), userRepository),
+  authService: new AuthService(new AuthFetch('http://localhost:8080'), new AuthRepository(), userRepository),
 }
 
 ReactDOM.render(

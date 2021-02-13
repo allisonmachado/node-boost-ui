@@ -1,10 +1,11 @@
 import jwt_decode from "jwt-decode";
 
+import { ACCESS_TOKEN_KEY } from '../../lib/Constants'
 
 export default class UserRepository {
   getUser() {
     try {
-      const accessToken = localStorage.getItem('user-access-token');
+      const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
       if (!accessToken) {
         return null;
       }
