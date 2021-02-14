@@ -1,5 +1,9 @@
+import { Link, useRouteMatch } from "react-router-dom";
+
 export default function UsersTable(props) {
-  return (<>
+  const { url } = useRouteMatch();
+
+  return (
     <table className="table table-hover table-responsive-sm">
       <thead className="thead-light">
         <tr>
@@ -15,6 +19,9 @@ export default function UsersTable(props) {
           <td>{user.surname}</td>
           <td>{user.email}</td>
           <td>
+            <Link to={`${url}/${user.id}`} role="button" className="btn btn-light mr-1">
+              <i className="bi-eye-fill"></i>
+            </Link>
             <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#confirmationModal" onClick={() => props.deleteHandler(user)}>
               <i className="bi-trash"></i>
             </button>
@@ -22,5 +29,5 @@ export default function UsersTable(props) {
         </tr>)}
       </tbody>
     </table>
-  </>);
+  );
 }
