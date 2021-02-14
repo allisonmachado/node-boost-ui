@@ -7,4 +7,9 @@ export default class UserFetch {
     const response = await fetch(`${this.baseUrl}/users`);
     return response.json();
   }
+
+  async getUser(id) {
+    const response = await fetch(`${this.baseUrl}/users/${id}`);
+    return response.json();
+  }
 }

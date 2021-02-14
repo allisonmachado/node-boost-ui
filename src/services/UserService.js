@@ -8,6 +8,10 @@ export default class UserService {
     return this.userFetch.getUsers();
   }
 
+  async getUser(id) {
+    return this.userFetch.getUser(id);
+  }
+
   getLoggedInUser() {
     return this.userRepository.getUser();
   }
