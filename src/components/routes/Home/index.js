@@ -1,6 +1,6 @@
 import Title from "../../util/Title";
 
-export default function Home(props) {
+export default function Home() {
   return (<>
     <Title>Node Boost</Title>
     <p>Minimal user interface for the node-boost app template.</p>

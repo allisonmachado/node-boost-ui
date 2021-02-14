@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 import { useState } from "react"
 import { useAuthState } from "../../../hooks/useAuthState";
 
-export default function LoginPage(props) {
+export default function LoginPage({ authService }) {
   const auth = useAuthState()
   const [user, setUser] = useState({ email: '', password: '' });
   const [disabled, setDisabled] = useState(false);
@@ -27,7 +27,7 @@ export default function LoginPage(props) {
     setDisabled(true)
     setInformError(false)
     try {
-      const authUser = await props.authService.authenticateUser(user.email, user.password);
+      const authUser = await authService.authenticateUser(user.email, user.password);
       auth.signIn(authUser)
     } catch (error) {
       setInformError(true)

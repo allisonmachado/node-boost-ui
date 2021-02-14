@@ -4,7 +4,7 @@ import Title from "../../../util/Title"
 import { useParams, Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function ShowUser(props) {
+export default function ShowUser({ userService }) {
   const { id } = useParams();
   const [user, setUser] = useState({
     name: '',
@@ -15,14 +15,14 @@ export default function ShowUser(props) {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const user = await props.userService.getUser(id);
+        const user = await userService.getUser(id);
         setUser(user);
       } catch (error) {
         setUser(null);
       }
     }
     fetchUser()
-  }, [props.userService, id]);
+  }, [userService, id]);
 
   return (user ? <>
     <Title>User - {user.id}</Title>

@@ -6,17 +6,17 @@ import ConfirmationModal from "../../../util/ConfirmationModal";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
 
-export default function ListUsers(props) {
+export default function ListUsers({ userService }) {
   const [users, setUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState({ id: 0, name: "", surname: "", email: "" })
 
   useEffect(() => {
     async function fetchUsers() {
-      const users = await props.userService.getUsers();
+      const users = await userService.getUsers();
       setUsers(users);
     }
     fetchUsers()
-  }, [props.userService]);
+  }, [userService]);
 
   function deleteUser(user) {
     console.log("TODO: delete", user);

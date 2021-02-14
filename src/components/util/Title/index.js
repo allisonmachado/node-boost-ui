@@ -1,6 +1,6 @@
-export default function Title(props) {
+export default function Title({ children }) {
   return (<>
-    <h1>{props.children}</h1>
+    <h1>{children}</h1>
     <hr/>
   </>);
 }

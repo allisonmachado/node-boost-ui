@@ -2,7 +2,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 
 import PrivateComponent from "../../../../util/PrivateComponent";
 
-export default function UsersTable(props) {
+export default function UsersTable({ users, deleteHandler }) {
   const { url } = useRouteMatch();
 
   return (
@@ -16,7 +16,7 @@ export default function UsersTable(props) {
         </tr>
       </thead>
       <tbody>
-        {props.users.map(user => <tr key={user.id}>
+        {users.map(user => <tr key={user.id}>
           <td>{user.name}</td>
           <td>{user.surname}</td>
           <td>{user.email}</td>
@@ -25,7 +25,7 @@ export default function UsersTable(props) {
               <i className="bi-eye-fill"></i>
             </Link>
             <PrivateComponent>
-              <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#confirmationModal" onClick={() => props.deleteHandler(user)}>
+              <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#confirmationModal" onClick={() => deleteHandler(user)}>
                 <i className="bi-trash"></i>
               </button>
             </PrivateComponent>

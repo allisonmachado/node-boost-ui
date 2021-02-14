@@ -1,7 +1,7 @@
-export default function ErrorList(props) {
+export default function ErrorList({ errors }) {
   return (
     <div className="text-danger">
-      <ul>{props.erros.map((err, index) => <li key={index}>{err}</li>)}</ul>
+      <ul>{errors.map((err, index) => <li key={index}>{err}</li>)}</ul>
     </div>
   );
 }
