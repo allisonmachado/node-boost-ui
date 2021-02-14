@@ -1,3 +1,4 @@
+import NotFound from "./components/routes/NotFound"
 import Footer from "./components/layouts/Footer";
 import Header from './components/layouts/Header';
 import Login from "./components/routes/Login";
@@ -14,7 +15,7 @@ export default function App(props) {
       <div className="container py-5 my-5">
         <Switch>
           <Route exact path="/">
-            <Home></Home>
+            <Home />
           </Route>
           <Route path="/login">
             <Login authService={props.container.authService}></Login>
@@ -23,6 +24,9 @@ export default function App(props) {
             <User
               userService={props.container.userService}>
             </User>
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </div>
