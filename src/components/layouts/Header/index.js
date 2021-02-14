@@ -21,7 +21,7 @@ export default function Header({ authService }) {
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav mr-auto">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/#">Home</NavLink>
             <NavLink to="/users">Users</NavLink>
             {auth.user ? logoutButton : <NavLink to="/login">Login</NavLink>}
           </ul>

@@ -1,30 +1,16 @@
 import React from "react"
 
-import { Link, withRouter } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
-class NavLink extends React.Component {
-  constructor(props) {
-    super(props);
-    this.current = this.isActivePage(this.props.location.pathname);
-  }
+export default function NavLink({ to, children }) {
 
-  isActivePage(path) {
-    if (this.props.to === "/") {
-      return this.props.location.pathname === "/";
-    }
-    return path.startsWith(this.props.to);
-  }
+  const match = useRouteMatch({ path: to, exact: false });
 
-  render() {
-    this.current = this.isActivePage(this.props.location.pathname);
-    return (
-      <li className={this.current ? "nav-item active" : 'nav-item'}>
-        <Link className="nav-link" to={this.props.to}>
-          {this.props.children} {this.current ? <span className="sr-only">(current)</span> : null}
-        </Link>
-      </li>
-    )
-  }
+  return (
+    <li className={match ? "nav-item active" : 'nav-item'}>
+      <Link className="nav-link" to={to}>
+        {children} {match ? <span className="sr-only">(current)</span> : null}
+      </Link>
+    </li>
+  )
 }
-
-export default withRouter(NavLink);
