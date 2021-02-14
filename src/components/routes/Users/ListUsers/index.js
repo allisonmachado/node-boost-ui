@@ -40,6 +40,6 @@ export default function ListUsers(props) {
       action="Delete"
       item={selectedUser}
       name={selectedUser.name + " " + selectedUser.surname}
-      deleteHandler={deleteUser}></ConfirmationModal>
+      deleteHandler={deleteUser} />
   </>)
 }

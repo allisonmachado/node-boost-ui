@@ -9,8 +9,7 @@ import { Switch, Route } from "react-router-dom";
 
 export default function App(props) {
   return (<>
-    <Header authService={props.container.authService}>
-    </Header>
+    <Header authService={props.container.authService} />
     <main role="main" className="flex-shrink-0">
       <div className="container py-5 my-5">
         <Switch>
@@ -18,7 +17,7 @@ export default function App(props) {
             <Home />
           </Route>
           <Route path="/login">
-            <Login authService={props.container.authService}></Login>
+            <Login authService={props.container.authService} />
           </Route>
           <Route path="/users">
             <User
@@ -31,6 +30,6 @@ export default function App(props) {
         </Switch>
       </div>
     </main>
-    <Footer></Footer>
+    <Footer />
   </>);
 }

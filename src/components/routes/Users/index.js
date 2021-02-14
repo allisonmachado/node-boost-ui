@@ -12,7 +12,7 @@ export default function Users(props) {
   return (
     <Switch>
       <Route exact path={path}>
-        <ListUsers userService={props.userService}></ListUsers>
+        <ListUsers userService={props.userService} />
       </Route>
       <Route path={`${path}/:userId`}>
         :userId
