@@ -12,6 +12,11 @@ export default class UserService {
     return this.userFetch.getUser(id);
   }
 
+  async deleteUser(id) {
+    const loggedUser = this.userRepository.getUser();
+    return this.userFetch.deleteUser(id, loggedUser.accessToken);
+  }
+
   getLoggedInUser() {
     return this.userRepository.getUser();
   }

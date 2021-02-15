@@ -18,8 +18,10 @@ export default function ListUsers({ userService }) {
     fetchUsers()
   }, [userService]);
 
-  function deleteUser(user) {
-    console.log("TODO: delete", user);
+  async function deleteUser(user) {
+    await userService.deleteUser(user.id);
+    const currentUsers = users.filter(u => u.id !== user.id);
+    setUsers(currentUsers);
   }
 
   return (<>
