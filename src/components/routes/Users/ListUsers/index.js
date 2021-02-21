@@ -3,10 +3,11 @@ import UsersTable from "./Table";
 import PrivateComponent from "../../../util/PrivateComponent";
 import ConfirmationModal from "../../../util/ConfirmationModal";
 
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { useState, useEffect } from "react"
 
 export default function ListUsers({ userService }) {
+  const { url } = useRouteMatch();
   const [users, setUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState({ id: 0, name: "", surname: "", email: "" })
 
@@ -31,7 +32,7 @@ export default function ListUsers({ userService }) {
       deleteHandler={setSelectedUser}>
     </UsersTable>
     <PrivateComponent>
-      <Link to={`/create`}>
+      <Link to={`${url}/create`}>
         <button type="button" className="btn btn-primary float-right">
           Create
       </button>
