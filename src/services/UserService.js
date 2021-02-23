@@ -14,12 +14,12 @@ export default class UserService {
 
   async deleteUser(id) {
     const loggedUser = this.userRepository.getUser();
-    return this.userFetch.deleteUser(id, loggedUser.accessToken);
+    return this.userFetch.deleteUser(id, loggedUser?.accessToken);
   }
 
   async createUser(user) {
     const loggedUser = this.userRepository.getUser();
-    return this.userFetch.createUser(user, loggedUser.accessToken);
+    return this.userFetch.createUser(user, loggedUser?.accessToken);
   }
 
   getLoggedInUser() {
