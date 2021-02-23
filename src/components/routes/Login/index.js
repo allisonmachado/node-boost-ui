@@ -61,7 +61,7 @@ export default function LoginPage({ authService }) {
           disabled={disabled}
           onChange={handleInputChange} />
       </div>
-      {informError && <ErrorList erros={["Invalid email or password"]}></ErrorList>}
+      {informError && <ErrorList errors={["Invalid email or password"]}></ErrorList>}
       <button type="submit" className="btn btn-primary" disabled={disabled}>Submit</button>
     </form>
     <br></br>

@@ -4,7 +4,7 @@ import Title from "../../../util/Title";
 import LoadingLine from "../../../util/LoadingLine";
 import ErrorList from "../../../util/ErrorList";
 
-export default function CreateUser() {
+export default function CreateUser({ userService }) {
   const [user, setUser] = useState({
     name: '', surname: '', email: '', password: ''
   });
@@ -24,8 +24,8 @@ export default function CreateUser() {
     setDisabled(true)
     setInformError(false)
     try {
-      console.log(user);
-      // TODO: Save user
+      await userService.createUser(user);
+      alert(JSON.stringify(user))
     } catch (error) {
       setInformError(true)
       setDisabled(false)
@@ -70,7 +70,7 @@ export default function CreateUser() {
           onChange={handleInputChange} />
       </div>
       <div className="form-group">
-        <label htmlFor="passwordInput">Email</label>
+        <label htmlFor="passwordInput">Password</label>
         <input
           id="passwordInput"
           className="form-control"
@@ -81,7 +81,7 @@ export default function CreateUser() {
           onChange={handleInputChange} />
       </div>
 
-      {informError && <ErrorList erros={["Invalid email or password"]}></ErrorList>}
+      {informError && <ErrorList errors={["Invalid input data"]}></ErrorList>}
       <button type="submit" className="btn btn-primary" disabled={disabled}>Submit</button>
     </form>
 

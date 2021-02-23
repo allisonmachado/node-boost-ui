@@ -19,11 +19,15 @@ import 'jquery/dist/jquery.slim';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import './index.css';
 
+const userFetch = new UserFetch('http://localhost:8080');
+const authFetch = new AuthFetch('http://localhost:8080');
+
 const userRepository = new UserRepository();
+const authRepository = new AuthRepository();
 
 const container = {
-  userService: new UserService(new UserFetch('http://localhost:8080'), userRepository),
-  authService: new AuthService(new AuthFetch('http://localhost:8080'), new AuthRepository(), userRepository),
+  userService: new UserService(userFetch, userRepository),
+  authService: new AuthService(authFetch, authRepository, userRepository),
 }
 
 ReactDOM.render(
