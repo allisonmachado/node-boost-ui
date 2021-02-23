@@ -11,11 +11,11 @@ export default function CreateUser({ userService }) {
   const [user, setUser] = useState({
     name: '', surname: '', email: '', password: ''
   });
-  const [disabled, setDisabled] = useState(false);
-  const [informError, setInformError] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [error, setError] = useState([]);
+  const [informError, setInformError] = useState(false);
   const history = useHistory();
-  
 
   function handleInputChange(event) {
     const value = event.target.value;
@@ -33,6 +33,7 @@ export default function CreateUser({ userService }) {
       await userService.createUser(user);
       setSaved(true);
     } catch (error) {
+      setError(error.message);
       setInformError(true);
       setDisabled(false);
     }
@@ -88,7 +89,7 @@ export default function CreateUser({ userService }) {
           onChange={handleInputChange} />
       </div>
 
-      {informError && <ErrorList errors={["Invalid input data"]}></ErrorList>}
+      {informError && <ErrorList errors={[error]}></ErrorList>}
       {saved || <button type="submit" className="btn btn-primary" disabled={disabled}>Submit</button>}
     </form>
   

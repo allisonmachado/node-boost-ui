@@ -1,4 +1,5 @@
 import ClientError from "../../lib/ClientError";
+import StatusCode from "../../lib/StatusCode";
 
 export default class AuthFetch {
   constructor(baseUrl) {
@@ -12,12 +13,9 @@ export default class AuthFetch {
 
     const response = await fetch(`${this.baseUrl}/auth`, { method, headers, body });
 
-    if (!response.ok || response.status !== 200) {
-      throw new ClientError(response.status, {
-        "error": "Bad Request",
-        "message": "Invalid email or password",
-      })
-    }
+    if (response.status === 400) throw new ClientError(response.status, "Invalid email or password")
+    if (!response.ok || !StatusCode.isSuccess(response.status)) throw new Error("An error occurred, please try again later")
+
     return response.json();
   }
 }

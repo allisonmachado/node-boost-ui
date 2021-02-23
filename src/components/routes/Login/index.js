@@ -11,6 +11,7 @@ export default function LoginPage({ authService }) {
   const auth = useAuthState()
   const [user, setUser] = useState({ email: '', password: '' });
   const [disabled, setDisabled] = useState(false);
+  const [error, setError] = useState([]);
   const [informError, setInformError] = useState(false);
 
   function handleInputChange(event) {
@@ -30,6 +31,7 @@ export default function LoginPage({ authService }) {
       const authUser = await authService.authenticateUser(user.email, user.password);
       auth.signIn(authUser)
     } catch (error) {
+      setError(error.message);
       setInformError(true)
       setDisabled(false)
     }
@@ -61,7 +63,7 @@ export default function LoginPage({ authService }) {
           disabled={disabled}
           onChange={handleInputChange} />
       </div>
-      {informError && <ErrorList errors={["Invalid email or password"]}></ErrorList>}
+      {informError && <ErrorList errors={[error]}></ErrorList>}
       <button type="submit" className="btn btn-primary" disabled={disabled}>Submit</button>
     </form>
     <br></br>

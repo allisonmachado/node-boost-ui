@@ -1,4 +1,5 @@
 import ClientError from "../../lib/ClientError";
+import StatusCode from "../../lib/StatusCode";
 
 export default class UserFetch {
   constructor(baseUrl) {
@@ -25,12 +26,11 @@ export default class UserFetch {
 
     const response = await fetch(`${this.baseUrl}/users`, { method, headers, body });
 
-    if (!response.ok || response.status !== 201) {
-      throw new ClientError(response.status, {
-        "error": "Bad Request",
-        "message": "Double check all mandatory fields and correct email format",
-      })
-    }
+    if (response.status === 400) throw new ClientError(response.status, "Verify all mandatory fields and formats")
+    if (response.status === 401) throw new ClientError(response.status, "User needs to be authenticated to perform this action")
+    if (response.status === 403) throw new ClientError(response.status, "User is not authorized to perform this action")
+    if (!response.ok || !StatusCode.isSuccess(response.status)) throw new Error("An error occurred, please try again later")
+
     return response.json();
   }
 

@@ -1,5 +1,5 @@
 export default class ClientError extends Error {
-  constructor(statusCode, detail, ...params) {
+  constructor(statusCode, ...params) {
     super(...params);
 
     // Maintains proper stack trace for where our error was thrown (only available on V8)
@@ -8,6 +8,5 @@ export default class ClientError extends Error {
     }
     this.name = 'ClientError';
     this.statusCode = statusCode;
-    this.detail = detail;
   }
 }
