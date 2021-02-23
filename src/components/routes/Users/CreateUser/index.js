@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import Title from "../../../util/Title";
+
+import { useHistory } from "react-router-dom";
 
 import LoadingLine from "../../../util/LoadingLine";
 import ErrorList from "../../../util/ErrorList";
+import Title from "../../../util/Title";
+import Alert from "../../../util/Alert";
 
 export default function CreateUser({ userService }) {
   const [user, setUser] = useState({
@@ -10,6 +13,9 @@ export default function CreateUser({ userService }) {
   });
   const [disabled, setDisabled] = useState(false);
   const [informError, setInformError] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const history = useHistory();
+  
 
   function handleInputChange(event) {
     const value = event.target.value;
@@ -21,19 +27,20 @@ export default function CreateUser({ userService }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setDisabled(true)
-    setInformError(false)
+    setDisabled(true);
+    setInformError(false);
     try {
       await userService.createUser(user);
-      alert(JSON.stringify(user))
+      setSaved(true);
     } catch (error) {
-      setInformError(true)
-      setDisabled(false)
+      setInformError(true);
+      setDisabled(false);
     }
   }
 
   return (<>
     <Title>Create User</Title>
+    {saved && <Alert type="success" message="User saved successfully" />}
     <form onSubmit={handleSubmit} noValidate>
 
       <div className="form-group">
@@ -82,10 +89,11 @@ export default function CreateUser({ userService }) {
       </div>
 
       {informError && <ErrorList errors={["Invalid input data"]}></ErrorList>}
-      <button type="submit" className="btn btn-primary" disabled={disabled}>Submit</button>
+      {saved || <button type="submit" className="btn btn-primary" disabled={disabled}>Submit</button>}
     </form>
-
+  
+    {saved && <button className="btn btn-secondary" onClick={() => history.goBack()}>Back</button>}
     <br></br>
-    {disabled && <LoadingLine>Loading...</LoadingLine>}
+    {disabled && !saved && <LoadingLine>Loading...</LoadingLine>}
   </>);
 }
