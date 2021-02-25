@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { useUserState } from "../../../../hooks/useUserState"
 import { useHistory } from "react-router-dom";
 
 import LoadingLine from "../../../util/LoadingLine";
@@ -8,7 +9,7 @@ import Title from "../../../util/Title";
 import Alert from "../../../util/Alert";
 
 export default function CreateUser({ userService }) {
-  const [user, setUser] = useState({
+  const [user, setUser] = useUserState({
     name: '', surname: '', email: '', password: ''
   });
   const [saved, setSaved] = useState(false);
@@ -16,14 +17,6 @@ export default function CreateUser({ userService }) {
   const [error, setError] = useState([]);
   const [informError, setInformError] = useState(false);
   const history = useHistory();
-
-  function handleInputChange(event) {
-    const value = event.target.value;
-    const name = event.target.name;
-    setUser({
-      ...user, [name]: value
-    });
-  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -53,7 +46,7 @@ export default function CreateUser({ userService }) {
           name="name"
           value={user.name}
           disabled={disabled}
-          onChange={handleInputChange} />
+          onChange={setUser} />
       </div>
       <div className="form-group">
         <label htmlFor="surnameInput">Surname</label>
@@ -64,7 +57,7 @@ export default function CreateUser({ userService }) {
           name="surname"
           value={user.surname}
           disabled={disabled}
-          onChange={handleInputChange} />
+          onChange={setUser} />
       </div>
       <div className="form-group">
         <label htmlFor="emailInput">Email</label>
@@ -75,7 +68,7 @@ export default function CreateUser({ userService }) {
           name="email"
           value={user.email}
           disabled={disabled}
-          onChange={handleInputChange} />
+          onChange={setUser} />
       </div>
       <div className="form-group">
         <label htmlFor="passwordInput">Password</label>
@@ -86,7 +79,7 @@ export default function CreateUser({ userService }) {
           name="password"
           value={user.password}
           disabled={disabled}
-          onChange={handleInputChange} />
+          onChange={setUser} />
       </div>
 
       {informError && <ErrorList errors={[error]}></ErrorList>}
