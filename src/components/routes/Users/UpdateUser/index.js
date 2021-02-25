@@ -81,18 +81,7 @@ export default function UpdateUser({ userService }) {
           onChange={handleInputChange} />
       </div>
       <div className="form-group">
-        <label htmlFor="emailInput">Email</label>
-        <input
-          id="emailInput"
-          className="form-control"
-          type="email"
-          name="email"
-          value={user.email}
-          disabled={disabled}
-          onChange={handleInputChange} />
-      </div>
-      <div className="form-group">
-        <label htmlFor="passwordInput">Password</label>
+        <label htmlFor="passwordInput">New Password</label>
         <input
           id="passwordInput"
           className="form-control"

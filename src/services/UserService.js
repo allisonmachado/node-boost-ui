@@ -24,8 +24,8 @@ export default class UserService {
   }
 
   async updateUser(user) {
-    console.log("TODO: Request")
-    return {}
+    const loggedUser = this.userRepository.getUser();
+    return this.userFetch.updateUser(user, loggedUser?.accessToken);
   }
 
   getLoggedInUser() {
