@@ -1,8 +1,8 @@
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import CreateUser from './CreateUser';
+import UpdateUser from './UpdateUser';
 import ListUsers from './ListUsers'
 import ShowUser from './ShowUser'
-
-import { Switch, Route, useRouteMatch } from "react-router-dom";
 
 export default function Users({ userService }) {
   const { path } = useRouteMatch();
@@ -14,6 +14,9 @@ export default function Users({ userService }) {
       </Route>
       <Route path={`${path}/create`}>
         <CreateUser userService={userService} />
+      </Route>
+      <Route path={`${path}/edit/:id`}>
+        <UpdateUser userService={userService} />
       </Route>
       <Route path={`${path}/:id`}>
         <ShowUser userService={userService} />

@@ -22,8 +22,13 @@ export default function UsersTable({ users, deleteHandler }) {
           <td>{user.email}</td>
           <td>
             <Link to={`${url}/${user.id}`} role="button" className="btn btn-light mr-1">
-              <i className="bi-eye-fill"></i>
+              <i className="bi-eye"></i>
             </Link>
+            <PrivateComponent>
+              <Link to={`${url}/edit/${user.id}`} role="button" className="btn btn-light mr-1">
+                <i className="bi-pencil"></i>
+              </Link>
+            </PrivateComponent>
             <PrivateComponent>
               <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#confirmationModal" onClick={() => deleteHandler(user)}>
                 <i className="bi-trash"></i>

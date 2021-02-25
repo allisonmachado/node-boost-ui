@@ -9,7 +9,8 @@ export default class UserService {
   }
 
   async getUser(id) {
-    return this.userFetch.getUser(id);
+    const user = await this.userFetch.getUser(id);
+    return { ...user, password: '' }
   }
 
   async deleteUser(id) {
@@ -20,6 +21,11 @@ export default class UserService {
   async createUser(user) {
     const loggedUser = this.userRepository.getUser();
     return this.userFetch.createUser(user, loggedUser?.accessToken);
+  }
+
+  async updateUser(user) {
+    console.log("TODO: Request")
+    return {}
   }
 
   getLoggedInUser() {
