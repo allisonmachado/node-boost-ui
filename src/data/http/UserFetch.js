@@ -39,6 +39,7 @@ export default class UserFetch {
     if (response.status === 400) throw new ClientError(response.status, "Verify all mandatory fields and formats")
     if (response.status === 401) throw new ClientError(response.status, "User needs to be authenticated to perform this action")
     if (response.status === 403) throw new ClientError(response.status, "User is not authorized to perform this action")
+    if (response.status === 409) throw new ClientError(response.status, "The email provided is not unique in the system")
     if (!response.ok || !StatusCode.isSuccess(response.status)) throw new Error("An error occurred, please try again later")
 
     return response.json();
