@@ -3,9 +3,9 @@ import Title from "../../util/Title"
 import ErrorList from "../../util/ErrorList"
 import LoadingLine from "../../util/LoadingLine";
 
-import { Redirect } from "react-router-dom";
 import { useState } from "react"
 import { useAuthState } from "../../../hooks/useAuthState";
+import { useHistory, useLocation } from "react-router-dom";
 
 export default function LoginPage({ authService }) {
   const auth = useAuthState()
@@ -13,6 +13,9 @@ export default function LoginPage({ authService }) {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState([]);
   const [informError, setInformError] = useState(false);
+
+  const history = useHistory();
+  const location = useLocation();
 
   function handleInputChange(event) {
     const value = event.target.value;
@@ -30,6 +33,8 @@ export default function LoginPage({ authService }) {
     try {
       const authUser = await authService.authenticateUser(user.email, user.password);
       auth.signIn(authUser)
+      const { destination } = location.state || { destination: { pathname: "/" } };
+      history.replace(destination);
     } catch (error) {
       setError(error.message);
       setInformError(true)
@@ -37,8 +42,7 @@ export default function LoginPage({ authService }) {
     }
   }
 
-  const redirect = <Redirect to={{ pathname: "/" }} />
-  const thisPage = <>
+  return (<>
     <Title>Login</Title>
     <form onSubmit={handleSubmit} noValidate>
       <div className="form-group">
@@ -68,7 +72,5 @@ export default function LoginPage({ authService }) {
     </form>
     <br></br>
     {disabled && <LoadingLine>Loading...</LoadingLine>}
-  </>
-
-  return (!auth.user ? thisPage : redirect)
+  </>)
 }

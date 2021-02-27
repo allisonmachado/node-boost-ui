@@ -1,4 +1,6 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
+
+import PrivateRoute from "../PrivateRoute";
 import CreateUser from './CreateUser';
 import UpdateUser from './UpdateUser';
 import ListUsers from './ListUsers'
@@ -12,12 +14,12 @@ export default function Users({ userService }) {
       <Route exact path={path}>
         <ListUsers userService={userService} />
       </Route>
-      <Route path={`${path}/create`}>
+      <PrivateRoute path={`${path}/create`}>
         <CreateUser userService={userService} />
-      </Route>
-      <Route path={`${path}/edit/:id`}>
+      </PrivateRoute>
+      <PrivateRoute path={`${path}/edit/:id`}>
         <UpdateUser userService={userService} />
-      </Route>
+      </PrivateRoute>
       <Route path={`${path}/:id`}>
         <ShowUser userService={userService} />
       </Route>
