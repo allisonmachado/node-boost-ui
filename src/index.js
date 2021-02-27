@@ -5,7 +5,6 @@ import ProvideAuth from "./components/util/ProvideAuth"
 
 import UserService from './services/UserService';
 import UserFetch from './data/http/UserFetch';
-import UserRepository from './data/storage/UserRepository';
 
 import AuthService from './services/AuthService';
 import AuthRepository from './data/storage/AuthRepository'
@@ -22,12 +21,11 @@ import './index.css';
 const userFetch = new UserFetch('http://localhost:8080');
 const authFetch = new AuthFetch('http://localhost:8080');
 
-const userRepository = new UserRepository();
 const authRepository = new AuthRepository();
 
 const container = {
-  userService: new UserService(userFetch, userRepository),
-  authService: new AuthService(authFetch, authRepository, userRepository),
+  userService: new UserService(userFetch, authRepository),
+  authService: new AuthService(authFetch, authRepository),
 }
 
 ReactDOM.render(

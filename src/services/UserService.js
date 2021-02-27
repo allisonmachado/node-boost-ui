@@ -1,7 +1,7 @@
 export default class UserService {
-  constructor(userFetch, userRepository) {
+  constructor(userFetch, authRepository) {
     this.userFetch = userFetch;
-    this.userRepository = userRepository;
+    this.authRepository = authRepository;
   }
 
   async getUsers() {
@@ -14,21 +14,21 @@ export default class UserService {
   }
 
   async deleteUser(id) {
-    const loggedUser = this.userRepository.getUser();
+    const loggedUser = this.authRepository.getAuthenticatedUser();
     return this.userFetch.deleteUser(id, loggedUser?.accessToken);
   }
 
   async createUser(user) {
-    const loggedUser = this.userRepository.getUser();
+    const loggedUser = this.authRepository.getAuthenticatedUser();
     return this.userFetch.createUser(user, loggedUser?.accessToken);
   }
 
   async updateUser(user) {
-    const loggedUser = this.userRepository.getUser();
+    const loggedUser = this.authRepository.getAuthenticatedUser();
     return this.userFetch.updateUser(user, loggedUser?.accessToken);
   }
 
   getLoggedInUser() {
-    return this.userRepository.getUser();
+    return this.authRepository.getAuthenticatedUser();
   }
 }
