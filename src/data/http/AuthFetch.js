@@ -7,9 +7,11 @@ export default class AuthFetch extends BaseFetch {
     const headers = new Headers({ "Content-Type": "application/json" });
     const body = JSON.stringify({ email, password });
 
-    const response = await this.fetch(`${this.baseUrl}/auth`, { method, headers, body });
-    ResponseStatusMap.assertSuccess(response, ResponseStatusMap.AUTH_ERROR_MAP);
-
+    const response = await this.fetch(
+      `${this.baseUrl}/auth`,
+      ResponseStatusMap.AUTH_ERROR_MAP, 
+      { method, headers, body }
+    );
     return response.json();
   }
 }

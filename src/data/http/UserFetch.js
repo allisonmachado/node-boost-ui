@@ -4,16 +4,18 @@ import BaseFetch from "./BaseFetch";
 export default class UserFetch extends BaseFetch {
 
   async getUsers() {
-    const response = await this.fetch(`${this.baseUrl}/users`);
-    ResponseStatusMap.assertSuccess(response, ResponseStatusMap.DEFAULT_ERROR_MAP);
-
+    const response = await this.fetch(
+      `${this.baseUrl}/users`,
+      ResponseStatusMap.DEFAULT_ERROR_MAP
+    );
     return response.json();
   }
 
   async getUser(id) {
-    const response = await this.fetch(`${this.baseUrl}/users/${id}`);
-    ResponseStatusMap.assertSuccess(response, ResponseStatusMap.DEFAULT_ERROR_MAP);
-
+    const response = await this.fetch(
+      `${this.baseUrl}/users/${id}`,
+      ResponseStatusMap.DEFAULT_ERROR_MAP
+    );
     return response.json();
   }
 
@@ -25,8 +27,11 @@ export default class UserFetch extends BaseFetch {
     });
     const body = JSON.stringify(user);
 
-    const response = await this.fetch(`${this.baseUrl}/users`, { method, headers, body });
-    ResponseStatusMap.assertSuccess(response, ResponseStatusMap.DEFAULT_ERROR_MAP);
+    const response = await this.fetch(
+      `${this.baseUrl}/users`,
+      ResponseStatusMap.DEFAULT_ERROR_MAP,
+      { method, headers, body }
+    );
 
     return response.json();
   }
@@ -37,16 +42,24 @@ export default class UserFetch extends BaseFetch {
       "Authorization": `Bearer ${accessToken}`,
       "Content-Type": "application/json"
     });
-    const body = JSON.stringify({ name: user.name, surname: user.surname, password: user.password });
+    const body = JSON.stringify({
+      name: user.name, surname: user.surname, password: user.password
+    });
 
-    const response = await this.fetch(`${this.baseUrl}/users/${user.id}`, { method, headers, body });
-    ResponseStatusMap.assertSuccess(response, ResponseStatusMap.DEFAULT_ERROR_MAP);
+    await this.fetch(
+      `${this.baseUrl}/users/${user.id}`,
+      ResponseStatusMap.DEFAULT_ERROR_MAP,
+      { method, headers, body }
+    );
   }
 
   async deleteUser(id, accessToken) {
     const method = 'DELETE';
     const headers = new Headers({ "Authorization": `Bearer ${accessToken}` });
-    const response = await this.fetch(`${this.baseUrl}/users/${id}`, { method, headers });
-    ResponseStatusMap.assertSuccess(response, ResponseStatusMap.DEFAULT_ERROR_MAP);
+    await this.fetch(
+      `${this.baseUrl}/users/${id}`,
+      ResponseStatusMap.DEFAULT_ERROR_MAP,
+      { method, headers }
+    );
   }
 }
