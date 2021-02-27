@@ -3,8 +3,8 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import PrivateRoute from "../PrivateRoute";
 import CreateUser from './CreateUser';
 import UpdateUser from './UpdateUser';
-import ListUsers from './ListUsers'
-import ShowUser from './ShowUser'
+import ListUsers from './ListUsers';
+import ShowUser from './ShowUser';
 
 export default function Users({ userService }) {
   const { path } = useRouteMatch();

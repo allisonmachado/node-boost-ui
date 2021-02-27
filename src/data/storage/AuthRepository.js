@@ -1,14 +1,14 @@
 import jwt_decode from "jwt-decode";
 
-import { ACCESS_TOKEN_KEY } from '../../lib/Constants'
+import { ACCESS_TOKEN_KEY } from '../../lib/Constants';
 
 export default class AuthRepository {
   saveAccessToken(jwt) {
-    localStorage.setItem(ACCESS_TOKEN_KEY, jwt)
+    localStorage.setItem(ACCESS_TOKEN_KEY, jwt);
   }
 
   deleteAccessToken() {
-    localStorage.removeItem(ACCESS_TOKEN_KEY)
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
   }
 
   getAuthenticatedUser() {
@@ -22,7 +22,7 @@ export default class AuthRepository {
         this.deleteAccessToken();
         return null;
       }
-      return this._decodeUser(decodedToken, accessToken)
+      return this._decodeUser(decodedToken, accessToken);
     } catch (error) {
       console.error(`Error while trying to fetch user info via jwt: `, error);
     }

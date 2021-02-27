@@ -1,16 +1,16 @@
-import NavLink from "./NavLink"
+import NavLink from "./NavLink";
 
-import { useAuthState } from "../../../hooks/useAuthState"
+import { useAuthState } from "../../../hooks/useAuthState";
 
 export default function Header({ authService }) {
-  const auth = useAuthState()
+  const auth = useAuthState();
 
   function logoutUser() {
     authService.quitUser();
     auth.signOut();
   }
 
-  const logoutButton = <span className="nav-link" role="button" onClick={logoutUser}>Logout</span>
+  const logoutButton = <span className="nav-link" role="button" onClick={logoutUser}>Logout</span>;
 
   return (
     <header>

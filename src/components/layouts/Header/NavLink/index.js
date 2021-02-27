@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 import { Link, useRouteMatch } from "react-router-dom";
 
@@ -12,5 +12,5 @@ export default function NavLink({ to, children }) {
         {children} {match ? <span className="sr-only">(current)</span> : null}
       </Link>
     </li>
-  )
+  );
 }

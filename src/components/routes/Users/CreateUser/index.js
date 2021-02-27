@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useUserState } from "../../../../hooks/useUserState"
+import { useUserState } from "../../../../hooks/useUserState";
 import { useHistory } from "react-router-dom";
 
 import LoadingLine from "../../../util/LoadingLine";

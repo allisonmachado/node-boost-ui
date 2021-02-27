@@ -7,14 +7,14 @@ import PrivateComponent from "../../../util/PrivateComponent";
 import ConfirmationModal from "../../../util/ConfirmationModal";
 
 import { Link, useRouteMatch } from "react-router-dom";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 export default function ListUsers({ userService }) {
   const [selectedUser, setSelectedUser] = useState({
     id: 0, name: "", surname: "", email: ""
   });
   const [loading, setLoading] = useState(true);
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
   const [errors, setErrors] = useState([]);
   const [deleteError, setDeleteError] = useState('');
   const { url } = useRouteMatch();
@@ -30,7 +30,7 @@ export default function ListUsers({ userService }) {
         setLoading(false); 
       }
     }
-    fetchUsers()
+    fetchUsers();
   }, [userService]);
 
   async function deleteUser(user) {
@@ -68,5 +68,5 @@ export default function ListUsers({ userService }) {
           deleteHandler={deleteUser} />
       </>}
     </>}
-  </>)
+  </>);
 }

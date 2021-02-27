@@ -25,13 +25,18 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "lint": "eslint ./src/** --ext .ts",
+    "lint:fix": "eslint --fix ./src/** --ext .ts"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "semi": ["error", "always"]
+    }
   },
   "browserslist": {
     "production": [

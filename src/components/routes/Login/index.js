@@ -1,14 +1,14 @@
-import React from "react"
-import Title from "../../util/Title"
-import ErrorList from "../../util/ErrorList"
+import React from "react";
+import Title from "../../util/Title";
+import ErrorList from "../../util/ErrorList";
 import LoadingLine from "../../util/LoadingLine";
 
-import { useState } from "react"
+import { useState } from "react";
 import { useAuthState } from "../../../hooks/useAuthState";
 import { useHistory, useLocation } from "react-router-dom";
 
 export default function LoginPage({ authService }) {
-  const auth = useAuthState()
+  const auth = useAuthState();
   const [user, setUser] = useState({ email: '', password: '' });
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState([]);
@@ -28,17 +28,17 @@ export default function LoginPage({ authService }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setDisabled(true)
-    setInformError(false)
+    setDisabled(true);
+    setInformError(false);
     try {
       const authUser = await authService.authenticateUser(user.email, user.password);
-      auth.signIn(authUser)
+      auth.signIn(authUser);
       const { destination } = location.state || { destination: { pathname: "/" } };
       history.replace(destination);
     } catch (error) {
       setError(error.message);
-      setInformError(true)
-      setDisabled(false)
+      setInformError(true);
+      setDisabled(false);
     }
   }
 
@@ -72,5 +72,5 @@ export default function LoginPage({ authService }) {
     </form>
     <br></br>
     {disabled && <LoadingLine>Loading...</LoadingLine>}
-  </>)
+  </>);
 }

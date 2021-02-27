@@ -1,13 +1,13 @@
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ProvideAuth from "./components/util/ProvideAuth"
+import ProvideAuth from "./components/util/ProvideAuth";
 
 import UserService from './services/UserService';
 import UserFetch from './data/http/UserFetch';
 
 import AuthService from './services/AuthService';
-import AuthRepository from './data/storage/AuthRepository'
+import AuthRepository from './data/storage/AuthRepository';
 import AuthFetch from './data/http/AuthFetch';
 
 import { BrowserRouter as Router } from "react-router-dom";
@@ -26,7 +26,7 @@ const authRepository = new AuthRepository();
 const container = {
   userService: new UserService(userFetch, authRepository),
   authService: new AuthService(authFetch, authRepository),
-}
+};
 
 ReactDOM.render(
   <React.StrictMode>

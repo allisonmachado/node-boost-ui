@@ -1,5 +1,5 @@
 import { Redirect, Route } from "react-router-dom";
-import { useAuthState } from "../../../hooks/useAuthState"
+import { useAuthState } from "../../../hooks/useAuthState";
 
 export default function PrivateRoute({ children, ...rest }) {
   const auth = useAuthState();

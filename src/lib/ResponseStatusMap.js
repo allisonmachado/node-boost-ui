@@ -19,7 +19,7 @@ export default class ResponseStatusMap {
       throw new ClientError(response.status, error);
     }
     if (!response.ok || !StatusCode.isSuccess(response.status)) {
-      throw new Error("An error occurred, please try again later")
+      throw new Error("An error occurred, please try again later");
     }
   }
 }

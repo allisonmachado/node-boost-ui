@@ -1,9 +1,9 @@
-import NotFound from "./components/routes/NotFound"
+import NotFound from "./components/routes/NotFound";
 import Footer from "./components/layouts/Footer";
 import Header from './components/layouts/Header';
 import Login from "./components/routes/Login";
 import Home from './components/routes/Home';
-import User from "./components/routes/Users"
+import User from "./components/routes/Users";
 
 import { Switch, Route } from "react-router-dom";
 

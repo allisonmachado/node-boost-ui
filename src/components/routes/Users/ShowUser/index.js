@@ -1,5 +1,5 @@
-import React from "react"
-import Title from "../../../util/Title"
+import React from "react";
+import Title from "../../../util/Title";
 
 import { useParams, Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ export default function ShowUser({ userService }) {
     name: '',
     surname: '',
     email: ''
-  })
+  });
 
   useEffect(() => {
     async function fetchUser() {
@@ -21,7 +21,7 @@ export default function ShowUser({ userService }) {
         setUser(null);
       }
     }
-    fetchUser()
+    fetchUser();
   }, [userService, id]);
 
   return (user ? <>

@@ -11,7 +11,7 @@ export default class UserService {
   }
 
   async quitUser() {
-    this.authRepository.deleteAccessToken()
+    this.authRepository.deleteAccessToken();
   }
 
   getAuthenticatedUser() {

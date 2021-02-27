@@ -11,5 +11,5 @@ export function useUserState(emptyUser) {
     });
   }
 
-  return [user, setUser, setUserFromEvent]
+  return [user, setUser, setUserFromEvent];
 }

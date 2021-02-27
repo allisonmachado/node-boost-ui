@@ -27,10 +27,10 @@ export default function UpdateUser({ userService }) {
         setUser(user);
         setDisabled(false);
       } catch (error) {
-        setNotFound(true)
+        setNotFound(true);
       }
     }
-    fetchUser()
+    fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userService, id]);
 

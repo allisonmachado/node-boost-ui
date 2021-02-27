@@ -10,7 +10,7 @@ export default class UserService {
 
   async getUser(id) {
     const user = await this.userFetch.getUser(id);
-    return { ...user, password: '' }
+    return { ...user, password: '' };
   }
 
   async deleteUser(id) {
