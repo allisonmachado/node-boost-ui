@@ -3,11 +3,11 @@ import BaseFetch from "./BaseFetch";
 
 export default class AuthFetch extends BaseFetch {
   constructor(baseUrl) {
-    super(baseUrl + '/auth', ResponseStatusMap.AUTH_ERROR_MAP);
+    super(baseUrl + "/auth", ResponseStatusMap.AUTH_ERROR_MAP);
   }
 
   async authenticateUser(email, password) {
-    const method = 'POST';
+    const method = "POST";
     const headers = new Headers({ "Content-Type": "application/json" });
     const body = JSON.stringify({ email, password });
 

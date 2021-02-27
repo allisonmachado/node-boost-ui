@@ -6,6 +6,6 @@ export default class ConnectivityError extends Error {
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, ConnectivityError);
     }
-    this.name = 'ConnectivityError';
+    this.name = "ConnectivityError";
   }
 }

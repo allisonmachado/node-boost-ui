@@ -9,7 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 export default function LoginPage({ authService }) {
   const auth = useAuthState();
-  const [user, setUser] = useState({ email: '', password: '' });
+  const [user, setUser] = useState({ email: "", password: "" });
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState([]);
   const [informError, setInformError] = useState(false);

@@ -10,7 +10,7 @@ import Alert from "../../../util/Alert";
 
 export default function CreateUser({ userService }) {
   const [user,, setUserFromEvent] = useUserState({
-    name: '', surname: '', email: '', password: ''
+    name: "", surname: "", email: "", password: ""
   });
   const [saved, setSaved] = useState(false);
   const [disabled, setDisabled] = useState(false);

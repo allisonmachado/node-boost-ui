@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode";
 
-import { ACCESS_TOKEN_KEY } from '../../lib/Constants';
+import { ACCESS_TOKEN_KEY } from "../../lib/Constants";
 
 export default class AuthRepository {
   saveAccessToken(jwt) {
@@ -24,7 +24,7 @@ export default class AuthRepository {
       }
       return this._decodeUser(decodedToken, accessToken);
     } catch (error) {
-      console.error(`Error while trying to fetch user info via jwt: `, error);
+      console.error("Error while trying to fetch user info via jwt: ", error);
     }
   }
 

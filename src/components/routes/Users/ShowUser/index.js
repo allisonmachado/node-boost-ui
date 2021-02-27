@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 export default function ShowUser({ userService }) {
   const { id } = useParams();
   const [user, setUser] = useState({
-    name: '',
-    surname: '',
-    email: ''
+    name: "",
+    surname: "",
+    email: ""
   });
 
   useEffect(() => {

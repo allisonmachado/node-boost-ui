@@ -16,7 +16,7 @@ export default function ListUsers({ userService }) {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const [errors, setErrors] = useState([]);
-  const [deleteError, setDeleteError] = useState('');
+  const [deleteError, setDeleteError] = useState("");
   const { url } = useRouteMatch();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function ListUsers({ userService }) {
       setUsers(currentUsers);
     } catch (error) {
       setDeleteError(error.message);
-      setTimeout(() => setDeleteError(''), 3000);
+      setTimeout(() => setDeleteError(""), 3000);
     }
   }
 

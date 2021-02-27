@@ -6,7 +6,7 @@ export default class ClientError extends Error {
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, ClientError);
     }
-    this.name = 'ClientError';
+    this.name = "ClientError";
     this.statusCode = statusCode;
   }
 }

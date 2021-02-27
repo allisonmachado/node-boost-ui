@@ -3,7 +3,7 @@ import BaseFetch from "./BaseFetch";
 
 export default class UserFetch extends BaseFetch {
   constructor(baseUrl) {
-    super(baseUrl + '/users', ResponseStatusMap.DEFAULT_ERROR_MAP);
+    super(baseUrl + "/users", ResponseStatusMap.DEFAULT_ERROR_MAP);
   }
 
   async getUsers() {
@@ -17,7 +17,7 @@ export default class UserFetch extends BaseFetch {
   }
 
   async createUser(user, accessToken) {
-    const method = 'POST';
+    const method = "POST";
     const headers = new Headers({
       "Authorization": `Bearer ${accessToken}`,
       "Content-Type": "application/json"
@@ -30,7 +30,7 @@ export default class UserFetch extends BaseFetch {
   }
 
   async updateUser(user, accessToken) {
-    const method = 'PUT';
+    const method = "PUT";
     const headers = new Headers({
       "Authorization": `Bearer ${accessToken}`,
       "Content-Type": "application/json"
@@ -46,7 +46,7 @@ export default class UserFetch extends BaseFetch {
   }
 
   async deleteUser(id, accessToken) {
-    const method = 'DELETE';
+    const method = "DELETE";
     const headers = new Headers({ "Authorization": `Bearer ${accessToken}` });
 
     await this.fetch({

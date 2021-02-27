@@ -10,7 +10,7 @@ export default class BaseFetch {
   async fetch({ path, options, errorMapper }) {
     let response;
     try {
-      response = await fetch(this.baseUrl + (path ?? ''), options);
+      response = await fetch(this.baseUrl + (path ?? ""), options);
     } catch (e) {
       throw new ConnectivityError("It was not possible to communicate with our servers. Please, try again later.");
     }
