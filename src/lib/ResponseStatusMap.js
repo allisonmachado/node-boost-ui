@@ -5,7 +5,7 @@ export default class ResponseStatusMap {
   static DEFAULT_ERROR_MAP = {
     400: "Verify all mandatory fields and formats",
     401: "User needs to be authenticated to perform this action",
-    403: "User is not authorized to perform this action",
+    403: "You are not authorized to perform this action",
     409: "The email provided is not unique in the system"
   }
 

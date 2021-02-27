@@ -1,3 +1,4 @@
+import Alert from "../../../util/Alert";
 import Title from "../../../util/Title";
 import ErrorList from "../../../util/ErrorList";
 import UsersTable from "./Table";
@@ -15,6 +16,7 @@ export default function ListUsers({ userService }) {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([])
   const [errors, setErrors] = useState([]);
+  const [deleteError, setDeleteError] = useState('');
   const { url } = useRouteMatch();
 
   useEffect(() => {
@@ -32,13 +34,19 @@ export default function ListUsers({ userService }) {
   }, [userService]);
 
   async function deleteUser(user) {
-    await userService.deleteUser(user.id);
-    const currentUsers = users.filter(u => u.id !== user.id);
-    setUsers(currentUsers);
+    try {
+      await userService.deleteUser(user.id);
+      const currentUsers = users.filter(u => u.id !== user.id);
+      setUsers(currentUsers);
+    } catch (error) {
+      setDeleteError(error.message);
+      setTimeout(() => setDeleteError(''), 3000);
+    }
   }
 
   return (<>
     <Title>Users</Title>
+    {deleteError && <Alert type="danger" message={deleteError} />}
     {loading ? <LoadingLine>Loading...</LoadingLine> : <>
       {errors.length > 0 ? <ErrorList errors={errors}></ErrorList> : <>
         <UsersTable
