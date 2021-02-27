@@ -1,5 +1,6 @@
 import Title from "../../../util/Title";
 import UsersTable from "./Table";
+import LoadingLine from "../../../util/LoadingLine";
 import PrivateComponent from "../../../util/PrivateComponent";
 import ConfirmationModal from "../../../util/ConfirmationModal";
 
@@ -7,14 +8,18 @@ import { Link, useRouteMatch } from "react-router-dom";
 import { useState, useEffect } from "react"
 
 export default function ListUsers({ userService }) {
-  const { url } = useRouteMatch();
+  const [selectedUser, setSelectedUser] = useState({
+    id: 0, name: "", surname: "", email: ""
+  });
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([])
-  const [selectedUser, setSelectedUser] = useState({ id: 0, name: "", surname: "", email: "" })
+  const { url } = useRouteMatch();
 
   useEffect(() => {
     async function fetchUsers() {
       const users = await userService.getUsers();
       setUsers(users);
+      setLoading(false);
     }
     fetchUsers()
   }, [userService]);
@@ -27,22 +32,24 @@ export default function ListUsers({ userService }) {
 
   return (<>
     <Title>Users</Title>
-    <UsersTable
-      users={users}
-      deleteHandler={setSelectedUser}>
-    </UsersTable>
-    <PrivateComponent>
-      <Link to={`${url}/create`}>
-        <button type="button" className="btn btn-primary float-right">
-          Create
+    {loading ? <LoadingLine>Loading...</LoadingLine> : <>
+      <UsersTable
+        users={users}
+        deleteHandler={setSelectedUser}>
+      </UsersTable>
+      <PrivateComponent>
+        <Link to={`${url}/create`}>
+          <button type="button" className="btn btn-primary float-right">
+            Create
       </button>
-      </Link>
-    </PrivateComponent>
-    <ConfirmationModal
-      title="Confirmation"
-      action="Delete"
-      item={selectedUser}
-      name={selectedUser.name + " " + selectedUser.surname}
-      deleteHandler={deleteUser} />
+        </Link>
+      </PrivateComponent>
+      <ConfirmationModal
+        title="Confirmation"
+        action="Delete"
+        item={selectedUser}
+        name={selectedUser.name + " " + selectedUser.surname}
+        deleteHandler={deleteUser} />
+    </>}
   </>)
 }
