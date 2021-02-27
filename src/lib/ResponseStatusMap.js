@@ -9,6 +9,10 @@ export default class ResponseStatusMap {
     409: "The email provided is not unique in the system"
   }
 
+  static AUTH_ERROR_MAP = {
+    400: "Invalid email or password",
+  }
+
   static assertSuccess(response, errorMap) {
     const error = errorMap[response.status];
     if (error) {

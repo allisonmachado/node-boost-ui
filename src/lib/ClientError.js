@@ -1,6 +1,6 @@
 export default class ClientError extends Error {
-  constructor(statusCode, ...params) {
-    super(...params);
+  constructor(statusCode, message) {
+    super(message);
 
     // Maintains proper stack trace for where our error was thrown (only available on V8)
     if (Error.captureStackTrace) {
