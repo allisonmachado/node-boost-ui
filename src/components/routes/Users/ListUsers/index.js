@@ -1,4 +1,5 @@
 import Title from "../../../util/Title";
+import ErrorList from "../../../util/ErrorList";
 import UsersTable from "./Table";
 import LoadingLine from "../../../util/LoadingLine";
 import PrivateComponent from "../../../util/PrivateComponent";
@@ -13,13 +14,19 @@ export default function ListUsers({ userService }) {
   });
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([])
+  const [errors, setErrors] = useState([]);
   const { url } = useRouteMatch();
 
   useEffect(() => {
     async function fetchUsers() {
-      const users = await userService.getUsers();
-      setUsers(users);
-      setLoading(false);
+      try {
+        const users = await userService.getUsers();
+        setUsers(users);
+      } catch (error) {
+        setErrors([error.message]);
+      } finally {
+        setLoading(false); 
+      }
     }
     fetchUsers()
   }, [userService]);
@@ -33,23 +40,25 @@ export default function ListUsers({ userService }) {
   return (<>
     <Title>Users</Title>
     {loading ? <LoadingLine>Loading...</LoadingLine> : <>
-      <UsersTable
-        users={users}
-        deleteHandler={setSelectedUser}>
-      </UsersTable>
-      <PrivateComponent>
-        <Link to={`${url}/create`}>
-          <button type="button" className="btn btn-primary float-right">
-            Create
-      </button>
-        </Link>
-      </PrivateComponent>
-      <ConfirmationModal
-        title="Confirmation"
-        action="Delete"
-        item={selectedUser}
-        name={selectedUser.name + " " + selectedUser.surname}
-        deleteHandler={deleteUser} />
+      {errors.length > 0 ? <ErrorList errors={errors}></ErrorList> : <>
+        <UsersTable
+          users={users}
+          deleteHandler={setSelectedUser}>
+        </UsersTable>
+        <PrivateComponent>
+          <Link to={`${url}/create`}>
+            <button type="button" className="btn btn-primary float-right">
+              Create
+            </button>
+          </Link>
+        </PrivateComponent>
+        <ConfirmationModal
+          title="Confirmation"
+          action="Delete"
+          item={selectedUser}
+          name={selectedUser.name + " " + selectedUser.surname}
+          deleteHandler={deleteUser} />
+      </>}
     </>}
   </>)
 }
