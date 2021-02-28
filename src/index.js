@@ -18,8 +18,10 @@ import "jquery/dist/jquery.slim";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./index.css";
 
-const userFetch = new UserFetch("http://localhost:8080");
-const authFetch = new AuthFetch("http://localhost:8080");
+const BACKEND_API = `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}`;
+
+const userFetch = new UserFetch(BACKEND_API);
+const authFetch = new AuthFetch(BACKEND_API);
 
 const authRepository = new AuthRepository();
 
