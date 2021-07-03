@@ -1,6 +1,6 @@
 # Node Boost User Interface
 
-Minimal user interface for the [node-boost](https://github.com/allisonmachado/node-boost) app template.
+Minimal user interface for the [node-boost v1.3.0](https://github.com/allisonmachado/node-boost) app template.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
